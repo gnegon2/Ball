@@ -47,6 +47,9 @@ public class PlayerController : MonoBehaviour {
     private float PICKUP_VOLUME = 0.1f;
     private float WINNER_VOLUME = 0.3f;
     private float MEAT_VOLUME = 0.2f;
+    private float EFFECT_NORMAL = 1f;
+    private float EFFECT_RAIN = 0.3f;
+    private float STEAM_POWER = 40f;
 
     private Rigidbody playerRigidbody;
     private Transform playerTransform;
@@ -58,6 +61,7 @@ public class PlayerController : MonoBehaviour {
     private Vector3 scaleFaster;
     private mode playerMode;
     private float playerSpeed;
+    private float effectSpeed;
 
 	void Start ()
     {
@@ -69,6 +73,7 @@ public class PlayerController : MonoBehaviour {
         SetScoreText();
         playerMode = mode.normal;
         playerSpeed = NORMAL_SPEED;
+        effectSpeed = EFFECT_NORMAL;
         scaleNormal = new Vector3(NORMAL_SCALE, NORMAL_SCALE, NORMAL_SCALE);
         scaleBigger = new Vector3(BIGGER_SCALE, BIGGER_SCALE, BIGGER_SCALE);
         scaleFaster = new Vector3(FASTER_SCALE, FASTER_SCALE, FASTER_SCALE);
@@ -85,7 +90,7 @@ public class PlayerController : MonoBehaviour {
 
         Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
 
-        playerRigidbody.AddForce(movement * playerSpeed);
+        playerRigidbody.AddForce(movement * playerSpeed * effectSpeed);
     }
 
     void OnTriggerEnter(Collider other)
@@ -145,6 +150,31 @@ public class PlayerController : MonoBehaviour {
                 playerRigidbody.mass = FASTER_MASS;
                 audioSource.PlayOneShot(audioClips.change, CHANGE_VOLUME);
             }
+        }
+        else if (other.gameObject.CompareTag("Rain"))
+        {
+            effectSpeed = EFFECT_RAIN;
+            playerRigidbody.velocity /= 3;
+        }
+    }
+
+    void OnTriggerStay(Collider other) 
+    {
+        if (other.gameObject.CompareTag("Steam"))
+        {
+            int x = other.gameObject.GetComponent<SteamDirection>().x;
+            int y = other.gameObject.GetComponent<SteamDirection>().y;
+            int z = other.gameObject.GetComponent<SteamDirection>().z;
+            Vector3 steam = new Vector3(STEAM_POWER * x, STEAM_POWER * y, STEAM_POWER * z);
+            playerRigidbody.AddForce(steam);   
+        } 
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Rain"))
+        {
+            effectSpeed = EFFECT_NORMAL;
         } 
     }
 

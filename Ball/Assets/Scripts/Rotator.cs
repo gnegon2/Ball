@@ -20,7 +20,7 @@ public class Rotator : MonoBehaviour {
                 transform.Rotate(new Vector3(25, 5, -15) * Time.deltaTime);
                 break;
             case "Faster":
-                transform.Rotate(new Vector3(95, 155, -135) * Time.deltaTime);
+                transform.Rotate(new Vector3(95, 155, -135) * Time.deltaTime * 2);
                 break;
         }
         
