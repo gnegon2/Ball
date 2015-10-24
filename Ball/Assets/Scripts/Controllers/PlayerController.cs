@@ -12,6 +12,11 @@ public class PlayerController : MonoBehaviour {
     };
 
     public int lives;
+    public int MAX_SCORE;
+    public PhysicMaterial physicMaterialNormal;
+    public PhysicMaterial physicMaterialBigger;
+    public PhysicMaterial physicMaterialFaster;
+    public GameObject Explosion;
 
     [System.Serializable]
     public class Texts
@@ -33,16 +38,15 @@ public class PlayerController : MonoBehaviour {
     public AudioClips audioClips;
     public Texts texts;
 
-    public int MAX_SCORE;
     private float NORMAL_MASS = 1;
     private float NORMAL_SCALE = 1;
     private float NORMAL_SPEED = 8;
-    private float BIGGER_MASS = 20;
+    private float BIGGER_MASS = 30;
     private float BIGGER_SCALE = 2;
-    private float BIGGER_SPEED = 50;
-    private float FASTER_MASS = 0.7f;
+    private float BIGGER_SPEED = 60;
+    private float FASTER_MASS = 0.3f;
     private float FASTER_SCALE = 0.7f;
-    private float FASTER_SPEED = 20;
+    private float FASTER_SPEED = 12;
     private float CHANGE_VOLUME = 0.1f;
     private float PICKUP_VOLUME = 0.1f;
     private float WINNER_VOLUME = 0.3f;
@@ -53,6 +57,7 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody playerRigidbody;
     private Transform playerTransform;
+    private Collider playerCollider;
     private AudioSource audioSource;
     private int playerScore;
     private float volume;
@@ -67,11 +72,13 @@ public class PlayerController : MonoBehaviour {
     {
         playerRigidbody = GetComponent<Rigidbody>();
         playerTransform = GetComponent<Transform>();
+        playerCollider = GetComponent<Collider>();
         audioSource = GetComponent<AudioSource>();
         playerScore = 0;
         SetLivesText();
         SetScoreText();
         playerMode = mode.normal;
+        playerCollider.material = physicMaterialNormal;
         playerSpeed = NORMAL_SPEED;
         effectSpeed = EFFECT_NORMAL;
         scaleNormal = new Vector3(NORMAL_SCALE, NORMAL_SCALE, NORMAL_SCALE);
@@ -122,6 +129,7 @@ public class PlayerController : MonoBehaviour {
         {
             if (playerMode != mode.normal)
             {
+                playerCollider.material = physicMaterialNormal;
                 playerMode = mode.normal;
                 playerSpeed = NORMAL_SPEED;
                 playerTransform.localScale = scaleNormal;
@@ -133,6 +141,7 @@ public class PlayerController : MonoBehaviour {
         {
             if (playerMode != mode.bigger)
             {
+                playerCollider.material = physicMaterialBigger;
                 playerMode = mode.bigger;
                 playerSpeed = BIGGER_SPEED;
                 playerTransform.localScale = scaleBigger;
@@ -144,6 +153,7 @@ public class PlayerController : MonoBehaviour {
         {
             if (playerMode != mode.faster)
             {
+                playerCollider.material = physicMaterialFaster;
                 playerMode = mode.faster;
                 playerSpeed = FASTER_SPEED;
                 playerTransform.localScale = scaleFaster;
@@ -156,6 +166,12 @@ public class PlayerController : MonoBehaviour {
             effectSpeed = EFFECT_RAIN;
             playerRigidbody.velocity /= 3;
         }
+        else if (other.gameObject.CompareTag("WallOfFire"))
+        {
+            Instantiate(Explosion, transform.position, transform.rotation);
+            LoseLife();                  
+        }
+        
     }
 
     void OnTriggerStay(Collider other) 
@@ -176,6 +192,27 @@ public class PlayerController : MonoBehaviour {
         {
             effectSpeed = EFFECT_NORMAL;
         } 
+    }
+
+    void LoseLife()
+    {
+        lives--;
+        SetLivesText();
+        if (lives <= 0)
+        {
+            texts.winText.text = "You Lose!";
+            Lose();
+        }
+        else
+        {
+            playerRigidbody.velocity = new Vector3(0, 0, 0);
+            transform.position = new Vector3(0, 1, 0);
+        }
+    }
+
+    void Lose()
+    {
+
     }
 
     void SetLivesText()
