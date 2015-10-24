@@ -46,5 +46,6 @@ Ball/Temp/
 Ball/Library/ShaderCache/
 Ball/obj/Debug/
 Ball/Library/metadata/
-**/*.info
-**/*.resource
+*.resource
+*.info
+
