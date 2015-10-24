@@ -2,14 +2,27 @@
 using System.Collections;
 
 public class Rotator : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-	
-	}
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime);
+        switch(gameObject.tag)
+        {
+            case "Meat":
+                transform.Rotate(new Vector3(0, 40, 0) * Time.deltaTime);
+                break;
+            case "Pick Up":
+                transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime);
+                break;
+            case "Normal":
+                transform.Rotate(new Vector3(-15, -45, 75) * Time.deltaTime);
+                break;
+            case "Bigger":
+                transform.Rotate(new Vector3(25, 5, -15) * Time.deltaTime);
+                break;
+            case "Faster":
+                transform.Rotate(new Vector3(95, 155, -135) * Time.deltaTime);
+                break;
+        }
+        
 	}
 }
