@@ -45,10 +45,16 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\CameraController.cs" />
-     <Compile Include="Assets\Scripts\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\Rotator.cs" />
-     <Compile Include="Assets\Scripts\SteamDirection.cs" />
+     <Compile Include="Assets\Scripts\Controllers\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Controllers\Rotator.cs" />
+     <Compile Include="Assets\Scripts\Effects\SteamDirection.cs" />
+     <Compile Include="Assets\Scripts\Pyro\FireBaseScript.cs" />
+     <Compile Include="Assets\Scripts\Pyro\FireCollisionForwardScript.cs" />
+     <Compile Include="Assets\Scripts\Pyro\FireConstantBaseScript.cs" />
+     <Compile Include="Assets\Scripts\Pyro\FireLightScript.cs" />
+     <Compile Include="Assets\Scripts\Pyro\SingleLineAttribute.cs" />
+     <None Include="Assets\Materials\Pyro\AdditiveTintable.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Programy/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
