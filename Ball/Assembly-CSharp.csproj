@@ -65,11 +65,17 @@
      <None Include="Assets\Materials\Pyro\AdditiveTintable.shader" />
      <None Include="Assets\Game Jam Menu Template\Fonts\OpenSans\License!.txt" />
      <None Include="Assets\Game Jam Menu Template\GameJamTemplateReadMe.txt" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>E:/Programy/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Programy/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>E:/Programy/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>E:/Programy/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>E:/Programy/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
