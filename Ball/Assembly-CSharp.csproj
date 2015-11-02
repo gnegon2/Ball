@@ -51,6 +51,7 @@
      <Compile Include="Assets\Game Jam Menu Template\Scripts\PlayMusic.cs" />
      <Compile Include="Assets\Game Jam Menu Template\Scripts\QuitApplication.cs" />
      <Compile Include="Assets\Game Jam Menu Template\Scripts\SetAudioLevels.cs" />
+     <Compile Include="Assets\Game Jam Menu Template\Scripts\SetMultiplayerMode.cs" />
      <Compile Include="Assets\Game Jam Menu Template\Scripts\ShowPanels.cs" />
      <Compile Include="Assets\Game Jam Menu Template\Scripts\StartOptions.cs" />
      <Compile Include="Assets\Scripts\Controllers\CameraController.cs" />
@@ -62,20 +63,20 @@
      <Compile Include="Assets\Scripts\Pyro\FireConstantBaseScript.cs" />
      <Compile Include="Assets\Scripts\Pyro\FireLightScript.cs" />
      <Compile Include="Assets\Scripts\Pyro\SingleLineAttribute.cs" />
+     <Compile Include="Assets\Scripts\Texts\LivesTextScriptFirstPlayer.cs" />
+     <Compile Include="Assets\Scripts\Texts\LivesTextScriptSecondPlayer.cs" />
+     <Compile Include="Assets\Scripts\Texts\ScoreTextScriptFirstPlayer.cs" />
+     <Compile Include="Assets\Scripts\Texts\ScoreTextScriptSecondPlayer.cs" />
+     <Compile Include="Assets\Scripts\Texts\WinTextScriptFirstPlayer.cs" />
+     <Compile Include="Assets\Scripts\Texts\WinTextScriptSecondPlayer.cs" />
      <None Include="Assets\Materials\Pyro\AdditiveTintable.shader" />
      <None Include="Assets\Game Jam Menu Template\Fonts\OpenSans\License!.txt" />
      <None Include="Assets\Game Jam Menu Template\GameJamTemplateReadMe.txt" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>E:/Programy/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Programy/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>E:/Programy/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Analytics">
- <HintPath>E:/Programy/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>E:/Programy/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>

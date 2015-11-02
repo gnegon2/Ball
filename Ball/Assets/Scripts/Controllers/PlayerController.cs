@@ -13,13 +13,14 @@ public class PlayerController : MonoBehaviour {
 
     public int lives;
     public int MAX_SCORE;
+    public int playerNumber;
     public PhysicMaterial physicMaterialNormal;
     public PhysicMaterial physicMaterialBigger;
     public PhysicMaterial physicMaterialFaster;
     public GameObject Explosion;
 
     [System.Serializable]
-    public class Texts
+    private class Texts
     {
         public Text livesText;
         public Text scoreText;
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     public AudioClips audioClips;
-    public Texts texts;
+    private Texts texts;
 
     private float NORMAL_MASS = 1;
     private float NORMAL_SCALE = 1;
@@ -92,9 +93,20 @@ public class PlayerController : MonoBehaviour {
 
     void FixedUpdate ()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+        float moveHorizontal;
+        float moveVertical;
 
+        if( playerNumber == 1 )
+        {
+            moveHorizontal = Input.GetAxis("Horizontal");
+            moveVertical = Input.GetAxis("Vertical");
+        }
+        else
+        {
+            moveHorizontal = Input.GetAxis("Horizontal2");
+            moveVertical = Input.GetAxis("Vertical2");
+        }
+        
         Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
 
         playerRigidbody.AddForce(movement * playerSpeed * effectSpeed);
@@ -217,11 +229,31 @@ public class PlayerController : MonoBehaviour {
 
     void SetLivesText()
     {
-        texts.livesText.text = "Lives: " + lives.ToString();  
+        Debug.Log("Lives: " + lives.ToString());
+        if( playerNumber == 1 )
+        {
+            LivesTextScriptFirstPlayer.lives = lives;
+            LivesTextScriptFirstPlayer.SetLivesText();
+        }
+        else
+        {
+            LivesTextScriptSecondPlayer.lives = lives;
+            LivesTextScriptSecondPlayer.SetLivesText();
+        }
     }
 
     void SetScoreText()
     {
-        texts.scoreText.text = "Score: " + playerScore.ToString();        
+        Debug.Log("playerScore: " + playerScore.ToString());
+        if (playerNumber == 1)
+        {
+            ScoreTextScriptFirstPlayer.score = playerScore;
+            ScoreTextScriptFirstPlayer.SetScoreText();
+        }
+        else
+        {
+            ScoreTextScriptSecondPlayer.score = playerScore;
+            ScoreTextScriptSecondPlayer.SetScoreText();
+        }        
     }
 }

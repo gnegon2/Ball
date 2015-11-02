@@ -5,8 +5,12 @@ using UnityEngine.Audio;
 
 public class StartOptions : MonoBehaviour {
 
-
-
+    public GameObject player;
+    public GameObject firstPlayerRespawn;
+    public GameObject secondPlayerRespawn;
+    public GameObject firstPlayerCamera;
+    public GameObject secondPlayerCamera;
+    public float multiplayerMode;
 	public int sceneToStart = 1;										//Index number in build settings of scene to load if changeScenes is true
 	public bool changeScenes;											//If true, load a new scene when Start is pressed, if false, fade out UI and continue in single scene
 	public bool changeMusicOnStart;										//Choose whether to continue playing menu music or start a new music clip
@@ -98,9 +102,32 @@ public class StartOptions : MonoBehaviour {
 
 		Debug.Log ("Game started in same scene! Put your game starting stuff here.");
 
-
+        CreatePlayers();
 	}
 
+    private void CreatePlayers()
+    {
+        GameObject first = Instantiate(player, firstPlayerRespawn.transform.position, firstPlayerRespawn.transform.rotation) as GameObject;
+        first.GetComponent<PlayerController>().playerNumber = 1;
+        firstPlayerCamera.SetActive(true);
+        firstPlayerCamera.GetComponent<CameraController>().player = first;
+        Debug.Log("multiplayerMode = " + multiplayerMode);
+        if (multiplayerMode == 2)
+        {
+            Debug.Log("multiplayerMode On");
+            GameObject second = Instantiate(player, secondPlayerRespawn.transform.position, secondPlayerRespawn.transform.rotation) as GameObject;
+            second.GetComponent<PlayerController>().playerNumber = 2;
+            secondPlayerCamera.SetActive(true);
+            secondPlayerCamera.GetComponent<CameraController>().player = second;
+            
+            firstPlayerCamera.GetComponent<Camera>().rect = new Rect(0, .5f, 1f, .5f);
+            secondPlayerCamera.GetComponent<Camera>().rect = new Rect(0, 0, 1f, .5f);
+        }
+        else
+        {
+            firstPlayerCamera.GetComponent<Camera>().rect = new Rect(0, 0, 1f, 1f);
+        }
+    }
 
 	public void PlayNewMusic()
 	{
