@@ -68,5 +68,7 @@ Ball/Builds/
 [Ll]ibrary/
 sysinfo.txt
 *.stackdump
-
-
+*.log
+*.stamp
+*.mdb
+*.dll

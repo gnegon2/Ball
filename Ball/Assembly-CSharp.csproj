@@ -51,12 +51,14 @@
      <Compile Include="Assets\Game Jam Menu Template\Scripts\PlayMusic.cs" />
      <Compile Include="Assets\Game Jam Menu Template\Scripts\QuitApplication.cs" />
      <Compile Include="Assets\Game Jam Menu Template\Scripts\SetAudioLevels.cs" />
+     <Compile Include="Assets\Game Jam Menu Template\Scripts\SetMultiplayerMode.cs" />
      <Compile Include="Assets\Game Jam Menu Template\Scripts\ShowPanels.cs" />
      <Compile Include="Assets\Game Jam Menu Template\Scripts\StartOptions.cs" />
      <Compile Include="Assets\Scripts\Controllers\CameraController.cs" />
      <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Controllers\Rotator.cs" />
      <Compile Include="Assets\Scripts\Effects\SteamDirection.cs" />
+     <Compile Include="Assets\Scripts\GameLogic.cs" />
      <Compile Include="Assets\Scripts\Pyro\FireBaseScript.cs" />
      <Compile Include="Assets\Scripts\Pyro\FireCollisionForwardScript.cs" />
      <Compile Include="Assets\Scripts\Pyro\FireConstantBaseScript.cs" />
