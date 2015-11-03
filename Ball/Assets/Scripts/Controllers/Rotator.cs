@@ -10,7 +10,7 @@ public class Rotator : MonoBehaviour {
             case "Meat":
                 transform.Rotate(new Vector3(0, 40, 0) * Time.deltaTime);
                 break;
-            case "Pick Up":
+            case "Score":
                 transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime);
                 break;
             case "Normal":

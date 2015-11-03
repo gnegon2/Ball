@@ -12,20 +12,11 @@ public class PlayerController : MonoBehaviour {
     };
 
     public int lives;
-    public int MAX_SCORE;
     public int playerNumber;
     public PhysicMaterial physicMaterialNormal;
     public PhysicMaterial physicMaterialBigger;
     public PhysicMaterial physicMaterialFaster;
     public GameObject Explosion;
-
-    [System.Serializable]
-    private class Texts
-    {
-        public Text livesText;
-        public Text scoreText;
-        public Text winText;
-    }
     
     [System.Serializable]
     public class AudioClips
@@ -37,7 +28,6 @@ public class PlayerController : MonoBehaviour {
     }
 
     public AudioClips audioClips;
-    private Texts texts;
 
     private float NORMAL_MASS = 1;
     private float NORMAL_SCALE = 1;
@@ -60,7 +50,6 @@ public class PlayerController : MonoBehaviour {
     private Transform playerTransform;
     private Collider playerCollider;
     private AudioSource audioSource;
-    private int playerScore;
     private float volume;
     private Vector3 scaleNormal;
     private Vector3 scaleBigger;
@@ -69,19 +58,23 @@ public class PlayerController : MonoBehaviour {
     private float playerSpeed;
     private float effectSpeed;
 
+    private GameLogic GameLogic;
+
 	void Start ()
     {
+        GameLogic = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<GameLogic>();
+        GameLogic.SetLivesText(playerNumber, lives);
+
         playerRigidbody = GetComponent<Rigidbody>();
         playerTransform = GetComponent<Transform>();
         playerCollider = GetComponent<Collider>();
         audioSource = GetComponent<AudioSource>();
-        playerScore = 0;
-        SetLivesText();
-        SetScoreText();
+        
         playerMode = mode.normal;
         playerCollider.material = physicMaterialNormal;
         playerSpeed = NORMAL_SPEED;
         effectSpeed = EFFECT_NORMAL;
+
         scaleNormal = new Vector3(NORMAL_SCALE, NORMAL_SCALE, NORMAL_SCALE);
         scaleBigger = new Vector3(BIGGER_SCALE, BIGGER_SCALE, BIGGER_SCALE);
         scaleFaster = new Vector3(FASTER_SCALE, FASTER_SCALE, FASTER_SCALE);
@@ -114,16 +107,17 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Pick Up"))
+        if (other.gameObject.CompareTag("Score"))
         {
             other.gameObject.SetActive(false);
-            playerScore++;
-            SetScoreText();
-            if (playerScore == MAX_SCORE)
+            //playerScore++;
+            //SetScoreText();
+            GameLogic.score--;
+            if (GameLogic.score == 0)
             {
                 audioSource.Stop();
                 audioSource.PlayOneShot(audioClips.winner, WINNER_VOLUME);
-                texts.winText.text = "You Win!";
+                GameLogic.WinGame();
             }
             else
             {
@@ -134,7 +128,7 @@ public class PlayerController : MonoBehaviour {
         {
             other.gameObject.SetActive(false);
             lives++;
-            SetLivesText();
+            GameLogic.SetLivesText(playerNumber, lives);
             audioSource.PlayOneShot(audioClips.meat, MEAT_VOLUME);
         }
         else if (other.gameObject.CompareTag("Normal"))
@@ -181,7 +175,7 @@ public class PlayerController : MonoBehaviour {
         else if (other.gameObject.CompareTag("WallOfFire"))
         {
             Instantiate(Explosion, transform.position, transform.rotation);
-            LoseLife();                  
+            LoseLife();                   
         }
         
     }
@@ -209,51 +203,16 @@ public class PlayerController : MonoBehaviour {
     void LoseLife()
     {
         lives--;
-        SetLivesText();
+        GameLogic.SetLivesText(playerNumber, lives);
         if (lives <= 0)
         {
-            texts.winText.text = "You Lose!";
-            Lose();
+            this.gameObject.SetActive(false);
+            GameLogic.PlayerLose(playerNumber);
         }
         else
         {
             playerRigidbody.velocity = new Vector3(0, 0, 0);
             transform.position = new Vector3(0, 1, 0);
         }
-    }
-
-    void Lose()
-    {
-
-    }
-
-    void SetLivesText()
-    {
-        Debug.Log("Lives: " + lives.ToString());
-        if( playerNumber == 1 )
-        {
-            LivesTextScriptFirstPlayer.lives = lives;
-            LivesTextScriptFirstPlayer.SetLivesText();
-        }
-        else
-        {
-            LivesTextScriptSecondPlayer.lives = lives;
-            LivesTextScriptSecondPlayer.SetLivesText();
-        }
-    }
-
-    void SetScoreText()
-    {
-        Debug.Log("playerScore: " + playerScore.ToString());
-        if (playerNumber == 1)
-        {
-            ScoreTextScriptFirstPlayer.score = playerScore;
-            ScoreTextScriptFirstPlayer.SetScoreText();
-        }
-        else
-        {
-            ScoreTextScriptSecondPlayer.score = playerScore;
-            ScoreTextScriptSecondPlayer.SetScoreText();
-        }        
     }
 }
