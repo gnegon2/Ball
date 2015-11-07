@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour {
 
     private GameLogic GameLogic;
 
-	void Start ()
+    void Start ()
     {
         GameLogic = GameObject.FindGameObjectWithTag("GameLogic").GetComponent<GameLogic>();
         GameLogic.SetLivesText(playerNumber, lives);
@@ -99,8 +99,11 @@ public class PlayerController : MonoBehaviour {
             moveHorizontal = Input.GetAxis("Horizontal2");
             moveVertical = Input.GetAxis("Vertical2");
         }
-        
-        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
+
+        if (Input.GetButtonDown("Jump"))
+            playerRigidbody.velocity = new Vector3(0, 10, 0);
+
+    Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
 
         playerRigidbody.AddForce(movement * playerSpeed * effectSpeed);
     }
