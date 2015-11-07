@@ -22,6 +22,9 @@ public class GameLogic : MonoBehaviour {
     public Text firstPlayerLivesText;
     public Text secondPlayerLivesText;
 
+    public Toggle tex1;
+    public Toggle tex2;
+
     private int remainingPlayers;
 
 	// Use this for initialization
@@ -38,7 +41,13 @@ public class GameLogic : MonoBehaviour {
         mainCamera.SetActive(false); // turn off main camera
         Debug.Log("mainCamera turned off.");
 
-        firstPlayer = Instantiate(Resources.Load("Prefabs/GamePlay/player", typeof(GameObject))) as GameObject;
+        //Wybór tekstury
+        if (tex1.isOn)
+            firstPlayer = Instantiate(Resources.Load("Prefabs/GamePlay/playerTex1", typeof(GameObject))) as GameObject;
+        else if(tex2.isOn)
+            firstPlayer = Instantiate(Resources.Load("Prefabs/GamePlay/playerTex2", typeof(GameObject))) as GameObject;
+        else
+            firstPlayer = Instantiate(Resources.Load("Prefabs/GamePlay/player", typeof(GameObject))) as GameObject;
         firstPlayer.transform.position = firstPlayerRespawn.transform.position;
         firstPlayer.GetComponent<PlayerController>().playerNumber = 1;
 

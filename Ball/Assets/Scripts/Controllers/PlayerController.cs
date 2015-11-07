@@ -175,9 +175,9 @@ public class PlayerController : MonoBehaviour {
         else if (other.gameObject.CompareTag("WallOfFire"))
         {
             Instantiate(Explosion, transform.position, transform.rotation);
-            LoseLife();                   
+            LoseLife();
         }
-        
+
     }
 
     void OnTriggerStay(Collider other) 
