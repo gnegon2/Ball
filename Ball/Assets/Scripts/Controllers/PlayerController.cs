@@ -182,16 +182,16 @@ public class PlayerController : MonoBehaviour {
         }
         else if (other.gameObject.CompareTag("Portal"))
         {
-            /*if (GameLogic.score > 0)
+            if (GameLogic.score > 0)
             {
                 Instantiate(Explosion, transform.position, transform.rotation);
                 LoseLife();
             }
             else
-            {*/
+            {
                 playerRigidbody.velocity = new Vector3(0, 0, 0);
                 transform.position = new Vector3(100, 4, 0);
-            //}
+            }
         }
 
     }
