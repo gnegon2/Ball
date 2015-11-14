@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 
 public class StartOptions : MonoBehaviour {
-    
+
     public float multiplayerMode;
 	public int sceneToStart = 1;										//Index number in build settings of scene to load if changeScenes is true
 	public bool changeScenes;											//If true, load a new scene when Start is pressed, if false, fade out UI and continue in single scene
@@ -22,8 +23,18 @@ public class StartOptions : MonoBehaviour {
 	private PlayMusic playMusic;										//Reference to PlayMusic script
 	private float fastFadeIn = .01f;									//Very short fade time (10 milliseconds) to start playing music immediately without a click/glitch
 	private ShowPanels showPanels;										//Reference to ShowPanels script on UI GameObject, to show and hide panels
-
 	
+    private Transform FindTransform(string name) 
+    {
+        Transform []transforms = transform.GetComponentsInChildren<Transform>();
+        foreach (Transform t in transforms)
+        {
+            print(t.name);
+            if (t.name == name) return t;
+        }
+        return null;
+    }
+
 	void Awake()
 	{
 		//Get a reference to ShowPanels attached to UI object
