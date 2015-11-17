@@ -42,6 +42,33 @@ Network Trash Folder
 Temporary Items
 .apdisk
 Ball/Builds/
-Ball/Temp/
-Ball/Library/ShaderCache/
-Ball/Library/metadata/
+*.resource
+*.info
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+[Ee]xported[Oo]bj/
+.vs/
+/*.userprefs
+/*.csproj
+/*.pidb
+/*.suo
+/*.sln*
+/*.user
+/*.unityproj
+/*.booproj
+
+# =============== #
+# Unity generated #
+# =============== #
+[Tt]emp/
+[Oo]bj/
+[Bb]uild
+[Ll]ibrary/
+sysinfo.txt
+*.stackdump
+*.log
+*.stamp
+*.mdb
+*.dll
