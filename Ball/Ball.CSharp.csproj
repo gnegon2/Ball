@@ -82,6 +82,8 @@
     <Compile Include="Assets\Scripts\Controllers\Rotator.cs" />
     <Compile Include="Assets\Scripts\Effects\SteamDirection.cs" />
     <Compile Include="Assets\Scripts\GameLogic.cs" />
+    <Compile Include="Assets\Scripts\PlayerTextures.cs" />
+    <Compile Include="Assets\Scripts\Portal.cs" />
     <Compile Include="Assets\Scripts\Pyro\FireBaseScript.cs" />
     <Compile Include="Assets\Scripts\Pyro\FireCollisionForwardScript.cs" />
     <Compile Include="Assets\Scripts\Pyro\FireConstantBaseScript.cs" />
