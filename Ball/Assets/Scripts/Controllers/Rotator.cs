@@ -22,6 +22,9 @@ public class Rotator : MonoBehaviour {
             case "Faster":
                 transform.Rotate(new Vector3(95, 155, -135) * Time.deltaTime * 2);
                 break;
+            case "Checkpoint":
+                transform.Rotate(new Vector3(-30, 65, -45) * Time.deltaTime);
+                break;
         }
         
 	}

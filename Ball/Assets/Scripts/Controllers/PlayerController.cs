@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour {
     private float effectSpeed;
 
     private GameLogic GameLogic;
+    private bool isOnGround;
 
     void Start ()
     {
@@ -93,19 +94,37 @@ public class PlayerController : MonoBehaviour {
         {
             moveHorizontal = Input.GetAxis("Horizontal");
             moveVertical = Input.GetAxis("Vertical");
+            if (Input.GetButtonDown("Jump") && isOnGround)
+                playerRigidbody.velocity += new Vector3(0, 7, 0);
         }
         else
         {
             moveHorizontal = Input.GetAxis("Horizontal2");
             moveVertical = Input.GetAxis("Vertical2");
+            if (Input.GetButtonDown("Jump2") && isOnGround)
+                playerRigidbody.velocity += new Vector3(0, 7, 0);
         }
 
-        if (Input.GetButtonDown("Jump"))
-            playerRigidbody.velocity = new Vector3(0, 10, 0);
-
-    Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
+        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
 
         playerRigidbody.AddForce(movement * playerSpeed * effectSpeed);
+      
+    }
+
+    void OnCollisionEnter(Collision collider)
+    {
+        if(collider.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = true;
+        }
+    }
+
+    void OnCollisionExit(Collision collider)
+    {
+        if (collider.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = false;
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -113,14 +132,15 @@ public class PlayerController : MonoBehaviour {
         if (other.gameObject.CompareTag("Score"))
         {
             other.gameObject.SetActive(false);
-            //playerScore++;
-            //SetScoreText();
             GameLogic.score--;
             if (GameLogic.score == 0)
             {
                 audioSource.Stop();
                 audioSource.PlayOneShot(audioClips.winner, WINNER_VOLUME);
-                GameLogic.WinGame();
+                GameLogic.firstPlayerInfoText.text = "Win!";
+                if(GameLogic.isMultiplayer)
+                    GameLogic.secondPlayerInfoText.text = "Win!";
+                Invoke("winMap", audioClips.winner.length);    
             }
             else
             {
@@ -182,15 +202,27 @@ public class PlayerController : MonoBehaviour {
         }
         else if (other.gameObject.CompareTag("Portal"))
         {
-            if (GameLogic.score > 0)
+            transform.position = other.gameObject.GetComponent<Portal>().destination.transform.position;
+        }
+        else if (other.gameObject.CompareTag("Checkpoint"))
+        {
+            if (playerNumber == 1)
             {
-                Instantiate(Explosion, transform.position, transform.rotation);
-                LoseLife();
+                if (GameLogic.firstPlayerLastCheckpoint != other.gameObject)
+                {
+                    GameLogic.firstPlayerLastCheckpoint = other.gameObject;
+                    GameLogic.firstPlayerInfoText.text = "Checkpoint!";
+                    Invoke("cleanInfoText", 3);  
+                }            
             }
             else
             {
-                playerRigidbody.velocity = new Vector3(0, 0, 0);
-                transform.position = new Vector3(100, 4, 0);
+                if (GameLogic.secondPlayerLastCheckpoint != other.gameObject)
+                {
+                    GameLogic.secondPlayerInfoText.text = "Checkpoint!";
+                    GameLogic.secondPlayerLastCheckpoint = other.gameObject;
+                    Invoke("cleanInfoText", 3); 
+                }   
             }
         }
 
@@ -228,7 +260,31 @@ public class PlayerController : MonoBehaviour {
         else
         {
             playerRigidbody.velocity = new Vector3(0, 0, 0);
-            transform.position = new Vector3(0, 1, 0);
+            if (playerNumber == 1)
+            {
+                transform.position = GameLogic.firstPlayerLastCheckpoint.transform.position;
+            }
+            else
+            {
+                transform.position = GameLogic.secondPlayerLastCheckpoint.transform.position;
+            }      
         }
+    }
+
+    void cleanInfoText()
+    {
+        if (playerNumber == 1)
+        {
+            GameLogic.firstPlayerInfoText.text = "";
+        }
+        else
+        {
+            GameLogic.secondPlayerInfoText.text = "";
+        }
+    }
+
+    void winMap()
+    {
+        GameLogic.WinMap();
     }
 }
