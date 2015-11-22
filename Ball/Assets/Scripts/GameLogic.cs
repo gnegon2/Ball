@@ -183,6 +183,9 @@ public class GameLogic : MonoBehaviour {
         switch(levelNumber)
         {
             case 1:
+                Application.LoadLevel("NewMaliork");
+                break;
+            case 2:
                 Application.LoadLevel("Map1");
                 break;
             default:

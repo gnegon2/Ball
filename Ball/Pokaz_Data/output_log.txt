@@ -2,33 +2,71 @@ Initialize engine version: 5.2.2f1 (3757309da7e7)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: AMD Radeon HD 7600M Series (ID=0x6840)
-    Vendor:   ATI
-    VRAM:     2030 MB
+    Renderer: NVIDIA GeForce GTX 970 (ID=0x13c2)
+    Vendor:   NVIDIA
+    VRAM:     4008 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Maliork\Documents\GitHub\Ball\Ball\Pokaz_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Maliork\Documents\GitHub\Ball\Ball\Pokaz_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Maliork\Documents\GitHub\Ball\Ball\Pokaz_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Maliork\Documents\GitHub\Ball\Ball\Pokaz_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Maliork\Documents\GitHub\Ball\Ball\Pokaz_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
-Loading C:\Users\Maliork\Documents\GitHub\Ball\Ball\Pokaz_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
-Platform assembly: C:\Users\Maliork\Documents\GitHub\Ball\Ball\Pokaz_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Maliork\Documents\GitHub\Ball\Ball\Pokaz_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\Maliork\Documents\GitHub\Ball\Ball\Pokaz_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\Maliork\Documents\GitHub\Ball\Ball\Pokaz_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-Platform assembly: C:\Users\Maliork\Documents\GitHub\Ball\Ball\Pokaz_Data\Managed\System.Core.dll (this message is harmless)
-- Completed reload, in  0.221 seconds
-desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+Platform assembly: D:\malio\Documents\Repository\Nowy_BALL\Ball\Ball\Pokaz_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\malio\Documents\Repository\Nowy_BALL\Ball\Ball\Pokaz_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\malio\Documents\Repository\Nowy_BALL\Ball\Ball\Pokaz_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\malio\Documents\Repository\Nowy_BALL\Ball\Ball\Pokaz_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\malio\Documents\Repository\Nowy_BALL\Ball\Ball\Pokaz_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading D:\malio\Documents\Repository\Nowy_BALL\Ball\Ball\Pokaz_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: D:\malio\Documents\Repository\Nowy_BALL\Ball\Ball\Pokaz_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\malio\Documents\Repository\Nowy_BALL\Ball\Ball\Pokaz_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\malio\Documents\Repository\Nowy_BALL\Ball\Ball\Pokaz_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\malio\Documents\Repository\Nowy_BALL\Ball\Ball\Pokaz_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\malio\Documents\Repository\Nowy_BALL\Ball\Ball\Pokaz_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\malio\Documents\Repository\Nowy_BALL\Ball\Ball\Pokaz_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\malio\Documents\Repository\Nowy_BALL\Ball\Ball\Pokaz_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\malio\Documents\Repository\Nowy_BALL\Ball\Ball\Pokaz_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\malio\Documents\Repository\Nowy_BALL\Ball\Ball\Pokaz_Data\Managed\System.Core.dll (this message is harmless)
+- Completed reload, in  0.155 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
-XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
+<RI.Hid> Failed to create device file:
+ 2 Nie można odnaleźć określonego pliku.
+
+ 
+(Filename:  Line: 54)
+
+<RI.Hid> Failed to create device file:
+ 2 Nie można odnaleźć określonego pliku.
+
+ 
+(Filename:  Line: 54)
+
 <RI> Input initialized.
 <RI> Initialized touch support.
-Platform assembly: C:\Users\Maliork\Documents\GitHub\Ball\Ball\Pokaz_Data\Managed\System.dll (this message is harmless)
-Setting up 1 worker threads for Enlighten.
-  Thread -> id: 1dfc -> priority: 1 
+Platform assembly: D:\malio\Documents\Repository\Nowy_BALL\Ball\Ball\Pokaz_Data\Managed\System.dll (this message is harmless)
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 2e60 -> priority: 1 
+  Thread -> id: 563c -> priority: 1 
 Game started in same scene! Put your game starting stuff here.
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+Creating Players...
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+mainCamera turned off.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+multiplayerMode = 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+multiplayerMode Off
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 64)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 6.570526 ms
+
+Unloading 122 unused Assets to reduce memory usage. Loaded Objects now: 930.
+Total: 1.448647 ms (FindLiveObjects: 0.123457 ms CreateObjectMapping: 0.061582 ms MarkObjects: 0.983555 ms  DeleteObjects: 0.268029 ms)
 
 Creating Players...
  
